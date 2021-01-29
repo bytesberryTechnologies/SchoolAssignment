@@ -149,6 +149,7 @@ function sendEmail(emailID) {
   const message = "Thank you for your feedback !!";
 
   var mail = {
+    from: "Bytesberry Technologies <" + creds.USER + ">",
     to: email,
     subject: "Testing Zoho Mail Server",
 
