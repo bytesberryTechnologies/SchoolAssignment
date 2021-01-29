@@ -29,10 +29,9 @@ const creds = require("./mailconfig");
 // };
 
 var transport = {
-  pool: true,
   host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // use TLS
+  port: 587,
+  secure: false, // use TLS
   auth: {
     user: creds.USER,
     pass: creds.PASS,
