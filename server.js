@@ -7,6 +7,8 @@ console.log("starting sql");
 const path = require("path");
 const dotenv = require("dotenv");
 dotenv.config();
+require("es6-promise").polyfill();
+require("isomorphic-fetch");
 
 app.use(cors());
 app.use(function (req, res, next) {
@@ -30,8 +32,8 @@ const creds = require("./mailconfig");
 
 var transport = {
   host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // use TLS
+  port: 587,
+  secure: false, // use TLS
   auth: {
     user: creds.USER,
     pass: creds.PASS,
@@ -57,6 +59,30 @@ app.use(express.static(path.join(__dirname, "build")));
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
+
+app.get("/checkCaptcha", async function (req, res) {
+  const RECAPTCHA_SERVER_KEY = process.env.RECAPTCHA_SERVER_KEY;
+  const humanKey = req.query.key;
+  const isHuman = await fetch(
+    `https://www.google.com/recaptcha/api/siteverify`,
+    {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+      },
+      body: `secret=${RECAPTCHA_SERVER_KEY}&response=${humanKey}`,
+    }
+  )
+    .then((res) => res.json())
+    .then((json) => json.success)
+    .catch((err) => {
+      return false;
+      // throw new Error(`Error in Google Siteverify API. ${err.message}`);
+    });
+  res.send(isHuman);
+});
+// Validate Human
 
 app.post("/sendFeedback", async function (req, res) {
   // make sure that any items are correctly URL encoded in the connection string
@@ -152,4 +178,4 @@ app.get("/getFeedback", (req, res) => {
   res.send("DB Connected");
 });
 
-app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 4000);
