@@ -29,18 +29,20 @@ const creds = require("./mailconfig");
 // };
 
 var transport = {
-  pool: true,
   host: "smtp.gmail.com",
   port: 465,
   secure: true, // use TLS
   auth: {
-    user: creds.USER,
-    pass: creds.PASS,
+    type: "OAuth2",
+    user: creds.user,
+    clientId: creds.clientId,
+    clientSecret: creds.clientSecret,
+    refreshToken: creds.refreshToken,
   },
-  tls: {
-    // do not fail on invalid certs
-    rejectUnauthorized: false,
-  },
+  // tls: {
+  //   // do not fail on invalid certs
+  //   rejectUnauthorized: false,
+  // },
 };
 
 var transporter = nodemailer.createTransport(transport);
