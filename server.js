@@ -30,8 +30,8 @@ const creds = require("./mailconfig");
 
 var transport = {
   host: "smtp.gmail.com",
-  port: 587,
-  secure: false, // use TLS
+  port: 465,
+  secure: true, // use TLS
   auth: {
     user: creds.USER,
     pass: creds.PASS,
