@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 dotenv.config();
 const dbconfig = function () {
-  console.log("Database_URL: ", process.env.DB_SERVER);
+  console.log("Database_URL: ", process.env.REACT_APP_DB_USER);
   const configuration = {
     server: "43.255.152.26",
     instance: process.env.REACT_APP_DB_INSTANCE,
