@@ -15,25 +15,18 @@ app.use(function (req, res, next) {
 const nodemailer = require("nodemailer");
 const creds = require("./mailconfig");
 
-// var transport = {
-//   host: creds.SMTP,
-//   port: creds.PORT,
-//   secure: false, // upgrade later with STARTTLS
-//   auth: {
-//     user: creds.USER,
-//     pass: creds.PASS,
-//   },
-//   tls: { rejectUnauthorized: false },
-// };
-var auth = {
-  type: process.env.Auth_type,
-  user: process.env.Auth_type,
-  clientId: process.env.Auth_type,
-  clientSecret: process.env.Auth_type,
-  refreshToken: process.env.Auth_type,
+var transport = {
+  host: creds.SMTP,
+  port: creds.PORT,
+  secure: STARTTLS, // upgrade later with STARTTLS
+  auth: {
+    user: creds.USER,
+    pass: creds.PASS,
+  },
+  tls: { rejectUnauthorized: false },
 };
 
-var transporter = nodemailer.createTransport({ service: "gmail", auth: creds });
+var transporter = nodemailer.createTransport(transport);
 
 transporter.verify((error, success) => {
   if (error) {
@@ -43,11 +36,11 @@ transporter.verify((error, success) => {
   }
 });
 
-// app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "build")));
 
-// app.get("/*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "build", "index.html"));
-// });
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.post("/sendFeedback", async function (req, res) {
   // make sure that any items are correctly URL encoded in the connection string
