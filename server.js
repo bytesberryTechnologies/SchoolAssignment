@@ -33,16 +33,13 @@ var transport = {
   port: 465,
   secure: true, // use TLS
   auth: {
-    type: "OAuth2",
-    user: creds.user,
-    clientId: creds.clientId,
-    clientSecret: creds.clientSecret,
-    refreshToken: creds.refreshToken,
+    user: creds.USER,
+    pass: creds.PASS,
   },
-  // tls: {
-  //   // do not fail on invalid certs
-  //   rejectUnauthorized: false,
-  // },
+  tls: {
+    // do not fail on invalid certs
+    rejectUnauthorized: false,
+  },
 };
 
 var transporter = nodemailer.createTransport(transport);
