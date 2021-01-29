@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.98b05359.chunk.css",
+    "main.js": "/static/js/main.82ca41d8.chunk.js",
+    "main.js.map": "/static/js/main.82ca41d8.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.50f172d2.js",
+    "runtime-main.js.map": "/static/js/runtime-main.50f172d2.js.map",
+    "static/css/2.85f7760d.chunk.css": "/static/css/2.85f7760d.chunk.css",
+    "static/js/2.5c007bac.chunk.js": "/static/js/2.5c007bac.chunk.js",
+    "static/js/2.5c007bac.chunk.js.map": "/static/js/2.5c007bac.chunk.js.map",
+    "static/js/3.5ea188d9.chunk.js": "/static/js/3.5ea188d9.chunk.js",
+    "static/js/3.5ea188d9.chunk.js.map": "/static/js/3.5ea188d9.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.85f7760d.chunk.css.map": "/static/css/2.85f7760d.chunk.css.map",
+    "static/css/main.98b05359.chunk.css.map": "/static/css/main.98b05359.chunk.css.map",
+    "static/js/2.5c007bac.chunk.js.LICENSE.txt": "/static/js/2.5c007bac.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/static/media/outline-icons.ddae9b1b.woff",
+    "static/media/check.546e4e84.png": "/static/media/check.546e4e84.png",
+    "static/media/feature.6ce58a1a.png": "/static/media/feature.6ce58a1a.png",
+    "static/media/logo.0ab414e7.png": "/static/media/logo.0ab414e7.png",
+    "static/media/new-message.eeb9c293.png": "/static/media/new-message.eeb9c293.png",
+    "static/media/presentation.dda3cdd8.png": "/static/media/presentation.dda3cdd8.png",
+    "static/media/software.5765231d.png": "/static/media/software.5765231d.png",
+    "static/media/video.8fe61494.mp4": "/static/media/video.8fe61494.mp4"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.50f172d2.js",
+    "static/css/2.85f7760d.chunk.css",
+    "static/js/2.5c007bac.chunk.js",
+    "static/css/main.98b05359.chunk.css",
+    "static/js/main.82ca41d8.chunk.js"
+  ]
+}
