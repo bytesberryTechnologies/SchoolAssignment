@@ -73,6 +73,7 @@ app.post("/sendFeedback", async function (req, res) {
 });
 
 function saveResponseFromUser(req) {
+  console.log("Database_URL", process.env.DB_SERVER);
   return new Promise((resolve) => {
     new sql.ConnectionPool(dbconfig())
       .connect()
