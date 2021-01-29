@@ -18,7 +18,7 @@ const creds = require("./mailconfig");
 var transport = {
   host: creds.SMTP,
   port: creds.PORT,
-  secure: false, // upgrade later with STARTTLS
+  secure: true, // upgrade later with STARTTLS
   auth: {
     user: creds.USER,
     pass: creds.PASS,
