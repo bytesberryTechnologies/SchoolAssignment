@@ -5,6 +5,8 @@ const { dbconfig } = require("./dbconfig");
 const app = express();
 console.log("starting sql");
 const path = require("path");
+const dotenv = require("dotenv");
+dotenv.config();
 
 app.use(cors());
 app.use(function (req, res, next) {
