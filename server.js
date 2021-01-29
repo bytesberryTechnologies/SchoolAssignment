@@ -12,8 +12,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-// const nodemailer = require("nodemailer");
-// const creds = require("./mailconfig");
+const nodemailer = require("nodemailer");
+const creds = require("./mailconfig");
 
 // var transport = {
 //   host: creds.SMTP,
@@ -25,22 +25,29 @@ app.use(function (req, res, next) {
 //   },
 //   tls: { rejectUnauthorized: false },
 // };
+var auth = {
+  type: process.env.Auth_type,
+  user: process.env.Auth_type,
+  clientId: process.env.Auth_type,
+  clientSecret: process.env.Auth_type,
+  refreshToken: process.env.Auth_type,
+};
 
-// var transporter = nodemailer.createTransport(transport);
+var transporter = nodemailer.createTransport({ service: "gmail", auth: creds });
 
-// transporter.verify((error, success) => {
-//   if (error) {
-//     console.log("error in transporter verification: ", error);
-//   } else {
-//     console.log("All works fine, congratz!");
-//   }
-// });
-
-app.use(express.static(path.join(__dirname, "build")));
-
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+transporter.verify((error, success) => {
+  if (error) {
+    console.log("error in transporter verification: ", error);
+  } else {
+    console.log("All works fine, congratz!");
+  }
 });
+
+// app.use(express.static(path.join(__dirname, "build")));
+
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
 
 app.post("/sendFeedback", async function (req, res) {
   // make sure that any items are correctly URL encoded in the connection string
