@@ -151,6 +151,4 @@ app.get("/getFeedback", (req, res) => {
   res.send("DB Connected");
 });
 
-app.listen(5000, () => {
-  console.log("Listining on port 5000");
-});
+app.listen(process.env.PORT || 5000);
