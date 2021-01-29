@@ -150,7 +150,7 @@ function sendEmail(emailID) {
 
   var mail = {
     to: email,
-    subject: "TEST SUBJECT",
+    subject: "Testing Zoho Mail Server",
 
     html: message,
   };
