@@ -18,7 +18,7 @@ const creds = require("./mailconfig");
 var transport = {
   host: creds.SMTP,
   port: creds.PORT,
-  secure: STARTTLS, // upgrade later with STARTTLS
+  secure: false, // upgrade later with STARTTLS
   auth: {
     user: creds.USER,
     pass: creds.PASS,
@@ -50,7 +50,7 @@ app.post("/sendFeedback", async function (req, res) {
   //
   console.log(conn);
   if (conn.rowsAffected[0] === 1) {
-    // sendEmail(req.query.Email);
+    sendEmail(req.query.Email);
   }
   res.send(conn);
 });
@@ -102,35 +102,35 @@ function saveResponseFromUser(req) {
   });
 }
 
-// function sendEmail(emailID) {
-//   const email = emailID;
-//   const message = "Thank you for your feedback !!";
+function sendEmail(emailID) {
+  const email = emailID;
+  const message = "Thank you for your feedback !!";
 
-//   var mail = {
-//     to: email,
-//     subject: "TEST SUBJECT",
+  var mail = {
+    to: email,
+    subject: "TEST SUBJECT",
 
-//     html: message,
-//   };
+    html: message,
+  };
 
-//   transporter.sendMail(mail, (err, data) => {
-//     let responseData = {
-//       err: err,
-//       data: data,
-//     };
-//     if (err) {
-//       // res.json({
-//       //   msg: responseData,
-//       // });
-//       console.log("ERROR :", err);
-//     } else {
-//       // res.json({
-//       //   msg: "success",
-//       // });
-//       console.log("SUCCESS :", success);
-//     }
-//   });
-// }
+  transporter.sendMail(mail, (err, data) => {
+    let responseData = {
+      err: err,
+      data: data,
+    };
+    if (err) {
+      // res.json({
+      //   msg: responseData,
+      // });
+      console.log("ERROR :", err);
+    } else {
+      // res.json({
+      //   msg: "success",
+      // });
+      console.log("SUCCESS :", success);
+    }
+  });
+}
 
 app.get("/getFeedback", (req, res) => {
   res.send("DB Connected");
