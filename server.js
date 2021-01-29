@@ -51,11 +51,11 @@ transporter.verify((error, success) => {
   }
 });
 
-// app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "build")));
 
-// app.get("/*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "build", "index.html"));
-// });
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.post("/sendFeedback", async function (req, res) {
   // make sure that any items are correctly URL encoded in the connection string
