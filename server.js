@@ -34,6 +34,7 @@ var transport = {
   host: "smtp.gmail.com",
   port: 465,
   secure: true, // use TLS
+  ignoreTLS: false,
   auth: {
     user: creds.USER,
     pass: creds.PASS,
