@@ -31,7 +31,7 @@ const creds = require("./mailconfig");
 // };
 
 var transport = {
-  host: "smtp.zoho.com",
+  host: "smtppro.zoho.com",
   port: 465,
   secure: true, // use SSL
   auth: {
