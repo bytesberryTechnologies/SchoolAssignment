@@ -15,15 +15,30 @@ app.use(function (req, res, next) {
 const nodemailer = require("nodemailer");
 const creds = require("./mailconfig");
 
+// var transport = {
+//   host: "smtp.gmail.com",
+//   port: creds.PORT,
+//   secure: true, // upgrade later with STARTTLS
+//   auth: {
+//     user: creds.USER,
+//     pass: creds.PASS,
+//   },
+//   tls: { rejectUnauthorized: false },
+// };
+
 var transport = {
-  host: creds.SMTP,
-  port: creds.PORT,
-  secure: true, // upgrade later with STARTTLS
+  pool: true,
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // use TLS
   auth: {
     user: creds.USER,
     pass: creds.PASS,
   },
-  tls: { rejectUnauthorized: false },
+  tls: {
+    // do not fail on invalid certs
+    rejectUnauthorized: false,
+  },
 };
 
 var transporter = nodemailer.createTransport(transport);
