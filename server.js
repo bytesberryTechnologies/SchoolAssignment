@@ -106,6 +106,7 @@ function saveResponseFromUser(req) {
           .request()
           .input("UserName", sql.VarChar, req.query.UserName)
           .input("Email", sql.VarChar, req.query.Email)
+          .input("Phonenumber", sql.VarChar, req.query.Phonenumber)
           .input("Qes1", sql.VarChar, req.query.Qes1)
           .input("Opt1_1", sql.VarChar, req.query.Opt1_1)
           .input("Opt2_1", sql.VarChar, req.query.Opt2_1)
